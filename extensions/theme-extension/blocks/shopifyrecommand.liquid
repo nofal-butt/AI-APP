@@ -1,0 +1,193 @@
+<div class="relatedDW">
+  <div class="widthDW">
+    <h2>{{ block.settings.heading }}</h2>
+    <div class="related-productsDW"></div>
+  </div>
+</div>
+{% if cart.item_count > 0 %}
+  {% assign relatedId = cart.items[0].product_id %}
+{% elsif product.id != null %}
+  {% assign relatedId = product.id %}
+{% else %}
+  {% for product in collections.all.products %}
+    {% assign relatedId = product.id %}
+  {% endfor %}
+{% endif %}
+<script>
+
+  console.log({{random_product_id}})
+  console.log({{random_index}})
+  function formatMoney(cents, format) {
+    if (typeof cents == 'string') {
+      cents = cents.replace('.', '');
+    }
+    var value = '';
+    var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+    var formatString = (format || this.money_format);
+
+    function defaultOption(opt, def) {
+      return(
+        typeof opt == 'undefined'
+          ? def
+          : opt
+      );
+    }
+
+    function formatWithDelimiters(number, precision, thousands, decimal) {
+      precision = defaultOption(precision, 2);
+      thousands = defaultOption(thousands, ',');
+      decimal = defaultOption(decimal, '.');
+
+      if (isNaN(number) || number == null) {
+        return 0;
+      }
+
+      number = (number / 100.0).toFixed(precision);
+
+      var parts = number.split('.'),
+        dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands),
+        cents = parts[1]
+          ? (decimal + parts[1])
+          : '';
+
+      return dollars + cents;
+    };
+
+    switch (formatString.match(placeholderRegex)[1]) {
+      case 'amount': value = formatWithDelimiters(cents, 2);
+        break;
+      case 'amount_no_decimals': value = formatWithDelimiters(cents, 0);
+        break;
+      case 'amount_with_comma_separator': value = formatWithDelimiters(cents, 2, '.', ',');
+        break;
+      case 'amount_no_decimals_with_comma_separator': value = formatWithDelimiters(cents, 0, '.', ',');
+        break;
+    }
+
+    return formatString.replace(placeholderRegex, value);
+  };
+
+  function buildBlock(product) {
+    const formatedPrice = formatMoney(product.price,"{{ shop.money_format }}")
+    const html = `
+    <a class="related-productDW" href="${
+      product.url
+    }">
+      <img src="${
+      product.images[0]
+    }"/>
+      <h3>${
+      product.title
+    }</h3>
+      <div class="priceDW"> From ${formatedPrice}</div>
+    <form method="post" action="/cart/add">
+    <input name="id" type="hidden" value="${
+      product.variants[0].id
+    }"/>
+    <button type="submit">Add to cart</button>
+    </form>
+      </a>
+    `
+    return html
+  }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [
+        array[i], array[j]
+      ] = [
+        array[j], array[i]
+      ];
+    }
+    return array;
+  }
+  fetch(window.Shopify.routes.root + `recommendations/products.json?product_id={{relatedId}}&limit=4`).then(response => response.json()).then(({products}) => {
+    console.log(products)
+    const shuffledProducts = shuffleArray(products);
+    shuffledProducts.forEach(product => {
+
+      const html = buildBlock(product)
+      document.querySelector('.related-productsDW').innerHTML += html
+    })
+  });
+</script>
+<style>
+  .relatedDW h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-align: -webkit-center;
+    font-family: cursive;
+
+
+  }
+  .related-productsDW {
+    display: flex;
+    margin-bottom: 2rem;
+    padding: 0;
+    list-style: none;
+    column-gap: 1%;
+  }
+  @media screen and (min-width: 750px) .related-productsDW {
+    column-gap: (--grvarid-desktop-horizontal-spacing);
+    row-gap: var(--grid-desktop-vertical-spacing);
+  }
+  .related-productDW {
+    text-decoration: none;
+  }
+  .related-productDW img {
+    display: flex;
+    width: 100%;
+    position: relative;
+    align-items: stretch;
+  }
+  .related-productDW h3 {
+    font-size: 1.4rem;
+    margin-bottom: 2px;
+    color: #111;
+    font-family: cursive;
+  }
+
+  .priceDW {
+    color: #111;
+    font-size: 1.4rem;
+    font-family: cursive;
+
+
+  }
+
+  .related-productDW button {
+
+    width: 100%;
+    background: #111;
+    cursor: pointer;
+    appearance: none;
+    color: white;
+    border-radius: 6px;
+    line-height: 46px;
+    border: none;
+    outline: none;
+    font-family: cursive;
+  }
+</style>
+
+
+{% schema %}
+  {
+    "name": "related products",
+    "target": "section",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Heading",
+        "id": "heading",
+        "default": "Recommended products"
+      }, {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading font",
+        "default": "helvetica_n4"
+      }
+    ]
+  }
+{% endschema %}

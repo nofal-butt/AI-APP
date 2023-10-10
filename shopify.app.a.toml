@@ -1,0 +1,27 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "profitable-vertical-app"
+client_id = "4e2924aa2a20f98b7b4d36c211f3825b"
+application_url = "https://play-shapes-black-victor.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products,read_content"
+
+[auth]
+redirect_urls = [
+  "https://play-shapes-black-victor.trycloudflare.com/auth/callback",
+  "https://play-shapes-black-victor.trycloudflare.com/auth/shopify/callback",
+  "https://play-shapes-black-victor.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "quickstart-16001e2e.myshopify.com"

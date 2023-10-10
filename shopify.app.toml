@@ -1,0 +1,26 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "profitable-vertical-app"
+client_id = "331515fd05dbbfedfeafeda902140ca5"
+application_url = "https://song-ntsc-espn-allen.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products,read_content"
+
+[auth]
+redirect_urls = [
+  "https://song-ntsc-espn-allen.trycloudflare.com/auth/callback",
+  "https://song-ntsc-espn-allen.trycloudflare.com/auth/shopify/callback",
+  "https://song-ntsc-espn-allen.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-07"
+
+[pos]
+embedded = false
+
+[build]
+dev_store_url = "paractice1.myshopify.com"

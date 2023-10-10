@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        /* related products */
+        .relatedDW {
+            padding: 0 5px 5px;
+        }
+
+        .relatedDW h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            text-align: -webkit-center;
+            font-family: cursive;
+
+
+        }
+
+        .related-productsDW {
+            display: grid;
+            grid-template-rows: minmax(0, 1fr) max-content minmax(0, 1fr);
+            padding: 1rem;
+            width: 100%;
+            flex-grow: 1;
+
+
+            display: flex;
+            justify-content: space-evenly;
+            align-content: stretch;
+            flex-wrap: nowrap;
+            flex-direction: row;
+        }
+
+        /* .focus-none {
+            box-shadow: none !important;
+            outline: 0 !important;
+        }
+
+        
+
+        .related-productDW {
+            position: relative;
+            width: 30%;
+            text-decoration: none;
+        }
+
+
+        .related-productDW img {
+            display: -webkit-inline-box;
+            height: 15%;
+            border-radius: 9px;
+            align-items: stretch;
+            justify-content: space-evenly;
+            flex-direction: row;
+        }
+
+        .related-productDW img:hover {
+            transition: --p-action-critical-depressed;
+
+        }
+
+        .related-productDW h3 {
+            font-size: 1.4rem;
+            margin-bottom: 2px;
+            color: #111;
+
+            font-family: cursive;
+        }
+
+        .related-productDW priceDW {
+            color: #111;
+            font-size: 1.4rem;
+            font-family: cursive;
+
+        } */
+
+        /*add to cart*/
+        .related-productDW button {
+            display: block;
+            appearance: none;
+            width: 100%;
+            background: #111;
+            color: white;
+            border-radius: 6px;
+            line-height: 46px;
+            text-align: center;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            font-family: cursive;
+        }
+    </style> -->
+    <!-- <style>
+        .widthDW h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            text-align: -webkit-center;
+            font-family: cursive;
+
+            text-align: center;
+            /* Center the content inside .widthDW */
+        }
+
+        .related-productsDW {
+            display: flex;
+            height: 15%;
+            align-items: stretch;
+
+            /* Center the items horizontally */
+        }
+
+        .related-productDW {
+            margin: 10px;
+            text-align: center;
+        }
+
+        .related-productDW img {
+            display: -webkit-inline-box;
+            height: 15%;
+            border-radius: 9px;
+            align-items: stretch;
+            justify-content: space-evenly;
+            flex-direction: row;
+        }
+
+        .related-productDW h3 {
+            font-size: 1.4rem;
+            margin-bottom: 2px;
+            color: #111;
+
+            font-family: cursive;
+        }
+
+        .priceDW {
+            color: #111;
+            font-size: 1.4rem;
+            font-family: cursive;
+        }
+
+
+
+        button {
+            display: block;
+            appearance: none;
+            width: 100%;
+            background: #111;
+            color: white;
+            border-radius: 6px;
+            line-height: 46px;
+            text-align: center;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            font-family: cursive;
+        }
+
+        button:hover {
+            background-color: #2d312e;
+        }
+
+        @media screen and (max-width: 768px) {
+            .related-productsDW {
+                flex-direction: row;
+                /* Stack items vertically */
+                align-items: center;
+                /* Center items horizontally */
+            }
+
+            .related-productDW {
+                width: 100%;
+                /* Take up full width */
+            }
+        }
+    </style> -->
+</head>
+
+<body>
+    <!-- <div class="relatedDW">
+        <div class="widthDW">
+            <h2>Recommended products</h2>
+            <div class="related-productsDW" content="width=device-width, initial-scale=1.0">
+                <a class="related-productDW"
+                    href="/products/the-multi-managed-snowboard?pr_prod_strat=collection_fallback&amp;pr_rec_id=205e431c1&amp;pr_rec_pid=8310586409234&amp;pr_ref_pid=8310586245394&amp;pr_seq=uniform">
+                    <img
+                        src="//cdn.shopify.com/s/files/1/0758/6021/4034/products/Main_9129b69a-0c7b-4f66-b6cf-c4222f18028a.jpg?v=1684302886">
+                    <h3>The Multi-managed Snowboard</h3>
+                    <div class="priceDW"> From Rs.629.95</div>
+                    <form method="post" action="/cart/add">
+                        <input name="id" type="hidden" value="45149045424402">
+                        <button type="submit">Add to cart</button>
+                    </form>
+                </a>
+
+                <a class="related-productDW"
+                    href="/products/the-complete-snowboard?pr_prod_strat=collection_fallback&amp;pr_rec_id=205e431c1&amp;pr_rec_pid=8310586212626&amp;pr_ref_pid=8310586245394&amp;pr_seq=uniform">
+                    <img
+                        src="//cdn.shopify.com/s/files/1/0758/6021/4034/products/Main_589fc064-24a2-4236-9eaf-13b2bd35d21d.jpg?v=1684302885">
+                    <h3>The Complete Snowboard</h3>
+                    <div class="priceDW"> From Rs.699.95</div>
+                    <form method="post" action="/cart/add">
+                        <input name="id" type="hidden" value="45149045096722">
+                        <button type="submit">Add to cart</button>
+                    </form>
+                </a>
+
+                <a class="related-productDW"
+                    href="/products/the-multi-location-snowboard?pr_prod_strat=collection_fallback&amp;pr_rec_id=205e431c1&amp;pr_rec_pid=8310586442002&amp;pr_ref_pid=8310586245394&amp;pr_seq=uniform">
+                    <img
+                        src="//cdn.shopify.com/s/files/1/0758/6021/4034/products/Main_0a4e9096-021a-4c1e-8750-24b233166a12.jpg?v=1684302886">
+                    <h3>The Multi-location Snowboard</h3>
+                    <div class="priceDW"> From Rs.729.95</div>
+                    <form method="post" action="/cart/add">
+                        <input name="id" type="hidden" value="45149045457170">
+                        <button type="submit">Add to cart</button>
+                    </form>
+                </a>
+
+                <a class="related-productDW"
+                    href="/products/the-collection-snowboard-liquid?pr_prod_strat=collection_fallback&amp;pr_rec_id=205e431c1&amp;pr_rec_pid=8310586540306&amp;pr_ref_pid=8310586245394&amp;pr_seq=uniform">
+                    <img
+                        src="//cdn.shopify.com/s/files/1/0758/6021/4034/products/Main_b13ad453-477c-4ed1-9b43-81f3345adfd6.jpg?v=1684302888">
+                    <h3>The Collection Snowboard: Liquid</h3>
+                    <div class="priceDW"> From Rs.749.95</div>
+                    <form method="post" action="/cart/add">
+                        <input name="id" type="hidden" value="45149046669586">
+                        <button type="submit">Add to cart</button>
+                    </form>
+                </a>
+            </div>
+        </div>
+    </div> -->
+
+</body>
+
+</html>
+
+
+<style>
+    /* related products */
+    .relatedDW {
+        padding: 0 5px 5px;
+    }
+
+    .relatedDW h2 {
+        font-size: 30px;
+        margin-bottom: 10px;
+        text-align: -webkit-center;
+        font-family: cursive;
+
+
+    }
+
+    .focus-none {
+        box-shadow: none !important;
+        outline: 0 !important;
+    }
+
+    .related-productsDW {
+        /* display: flex;
+    justify-content: space-evenly;
+    align-content: stretch;
+    flex-wrap: nowrap;
+    flex-direction: row;*/
+
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) max-content minmax(0, 1fr);
+        padding: 1rem;
+        width: 100%;
+        flex-grow: 1;
+        margin-top: calc(0rem - var(--image-padding));
+        grid-template-rows: max-content minmax(0, 1fr) max-content auto;
+    }
+
+    .related-productDW {
+        grid-row-start: 2;
+        padding: 1.3rem 1rem;
+        /*position: relative;
+    width: 30%;
+    text-decoration: none;*/
+    }
+
+
+    .related-productDW img {
+        display: -webkit-inline-box;
+        height: 15%;
+        border-radius: 9px;
+        align-items: stretch;
+        justify-content: space-evenly;
+        flex-direction: row;
+    }
+
+    .related-productDW img:hover {
+        transition: --p-action-critical-depressed;
+
+    }
+
+    .related-productDW h3 {
+        font-size: 1.4rem;
+        margin-bottom: 2px;
+        color: #111;
+
+        font-family: cursive;
+    }
+
+    .related-productDW priceDW {
+        color: #111;
+        font-size: 1.4rem;
+        font-family: cursive;
+
+    }
+
+    /*add to cart*/
+    .related-productDW button {
+        display: block;
+        appearance: none;
+        width: 100%;
+        background: #111;
+        color: white;
+        border-radius: 6px;
+        line-height: 46px;
+        text-align: center;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        font-family: cursive;
+    }
+</style>
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        background-color: #2196F3;
+        padding: 10px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+</style>

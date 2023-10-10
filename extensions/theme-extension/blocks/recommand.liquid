@@ -1,0 +1,247 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+  crossorigin="anonymous"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+<script
+  defer
+  src="https://unpkg.com/react@18/umd/react.development.js"
+  crossorigin
+></script>
+<script
+  defer
+  src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  crossorigin
+></script>
+<script defer src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+></script>
+
+
+<script type="text/javascript">
+var productData = [];
+{% for product in collections.all.products %}
+  productData.push({
+    title: "{{ product.title }}",
+    url: "{{ product.src}}",
+    image:"{{ product.featured_image | image_url: width: 400 | image_tag }}"
+  });
+{% endfor %}
+</script>
+
+<body>
+
+  <div id="mydiv"></div>
+
+  <script type="text/babel">
+      function Hello() {
+          const { useState } = React;
+          const [currentIndex, setCurrentIndex] = useState(0);
+          console.log(productData)
+      const images = [
+        {
+          id: 0,
+          src: "	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD417b4cQpNLHpkOXKt_i-Qo5-KTbK1ueF93NY0MJ556r0vchXmBIg1vKb-MwQgTdvPaY&usqp=CAU",
+        },
+        {
+          id: 1,
+          src: "	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm9v7G3n1bvU0qWYvuetfJY1XJM0bbzo7CAn8BignF&s",
+        },
+        {
+          id: 2,
+          src: "	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJC0uQfqUboEn_lf_-mqBjaLR_k1HGlj6VipoguK2RNQ2SgLLTC8ASzzhKVlKtqXJf42g&usqp=CAU",
+        },
+        {
+          id: 3,
+          src: "	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7F9XRAbAHsmNKi5idCxfO1oX02eHNdtCZctwHZCwiSoL9mkRpMj0XVKPorjjWI-qk8hM&usqp=CAU",
+        },
+        {
+          id: 4,
+          src: "	https://images.unsplash.com/photo-1536782376847-5c9d14d97cc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnJlZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        },
+        {
+          id: 5,
+          src: "	https://media.istockphoto.com/id/1340726355/vector/100-percent-count-on-dark-blue-background.jpg?s=612x612&w=0&k=20&c=KytPmgbhR-fZ3rFfXmVs-iEfYP-4vGdl6Zn2RN42XEw=",
+        },
+        {
+          id: 6,
+          src: "	https://media.istockphoto.com/id/1328395253/vector/hundred-points-emoji-icon.jpg?s=612x612&w=0&k=20&c=zy2NI8jM4FQhOuIqv4EfkqRvLamb-DeL4DDhqBKsS74=",
+        },
+        {
+          id: 7,
+          src: "	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPkou459kiseMNcwv8JdxX4WDOIyoDkhUgjF_dfbM&s",
+        },
+        {
+          id: 8,
+          src: "	https://media.istockphoto.com/id/1362718767/vector/speech-bubble-percent-sign.jpg?s=612x612&w=0&k=20&c=f4kg5AwPvm7Gsd2cWMIpq1hQFrZuIzkb7QcuPZa8xAY=",
+        },
+        {
+          id: 9,
+          src: "	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm9v7G3n1bvU0qWYvuetfJY1XJM0bbzo7CAn8BignF&s",
+        },
+      ];
+
+      const handlePrevClick = () => {
+        const index = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+        setCurrentIndex(index);
+      };
+
+      const handleNextClick = () => {
+        const index = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+        setCurrentIndex(index);
+      };
+
+      return (
+        <div className="AI-slideshow-container">
+          <button className="AI-prev" onClick={handlePrevClick}>
+            <img src="https://icons.veryicon.com/png/o/miscellaneous/commonly-used-icon-1/angle-bracket-left.png"  width="20"
+                    height="20"/>
+          </button>
+          <div >
+            {images.slice(currentIndex, currentIndex + 4).map((image) => (
+              <div className="AI-responsive">
+                <div className="AI-gallery">
+                  <a target="_blank" href="">
+                    <img
+                      key={image.id}
+                      src={image.src}
+                      alt={`Image ${image.id}`}
+                    />
+                  </a>
+                  <div className="AI-desc">
+                    Add a description of the image here
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button className="AI-next" onClick={handleNextClick}>
+           
+            <img src="https://icons.veryicon.com/png/o/miscellaneous/commonly-used-icon-1/angle-brackets.png"  width="20"
+                    height="20"/>
+         
+          </button>
+        </div>
+      );
+    }
+    const container = document.getElementById("mydiv");
+    const root = ReactDOM.createRoot(container);
+    root.render(<Hello />);
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Verdana, sans-serif;
+      margin: 0;
+    }
+    .AI-slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+    img {
+      vertical-align: middle;
+    }
+    /* Next & previous buttons */
+    .AI-prev,
+    .AI-next {
+        display: flex;
+      cursor: pointer;
+      position: absolute;
+      top: 80px;
+      padding: 16px;
+      color: rgb(10, 10, 10);
+      font-size: 18px;
+      transition: 0.6s ease;
+      user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .AI-next {
+      right: 0;
+    }
+.AI-arrow-iamge{
+    height: 5px;
+    width: 5px;
+}
+    /* On hover, add a black background color with a little bit see-through */
+    .AI-prev:hover,
+    .AI-next:hover {
+      background-color: rgba(22, 101, 155, 0.692);
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+      .AI-prev,
+      .AI-next,
+      .AI-text {
+        font-size: 10px;
+      }
+    }
+
+    /* galary */
+    div.AI-gallery {
+      border: 1px solid #ccc;
+    }
+
+    div.AI-gallery:hover {
+      border: 1px solid #777;
+    }
+
+    div.AI-gallery img {
+      width: 100%;
+      height: 15ch;
+    }
+
+    div.AI-desc {
+      padding: 15px;
+      text-align: center;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .AI-responsive {
+      padding: 0 6px;
+      float: left;
+      width: 24.99999%;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .AI-responsive {
+        margin: 6px 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      .AI-responsive {
+        width: 100%;
+      }
+    }
+
+    .clearfix:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  </style>
+</body>
+
+
+{% schema %}
+  {
+    "name": "recommand",
+    "target": "section",
+    "settings": []
+  }
+{% endschema %}
